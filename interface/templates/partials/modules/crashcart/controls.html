@@ -1,0 +1,90 @@
+<div id="drawerControlsLeft" class="col">
+  <div class="row justify-content-center">
+    <div class="d-flex">
+  {% for index in range(0, 3) %}  {% if loop.index == 1 %}
+        <div id="drawerControlsLeftAlignment" class="d-flex row g-0 justify-content-start gap-2">
+    {% endif %}
+          <div class="input-group">
+            <button class="btn btn-normal btn-square" id="drawer{{ index+1 }}-light" onclick="toggleLight('{{ index+1 }}')" aria-label="Toggle Light for Drawer {{ index+1 }}">
+              <i class="fa-regular fa-lightbulb icon-white"></i>
+            </button>
+            <div class="input-group-spacer"></div>
+            <button class="btn btn-primary btn-square" id="drawer{{ index+1 }}-toggle" onclick="toggleDrawer('{{ index+1 }}')" aria-label="Toggle Drawer {{ index+1 }}">
+              <i class="fas fa-lock"></i>
+            </button>
+            <div class="input-group-spacer"></div>
+            <span class="input-group-text input-group-label bg-secondary" id="inputGroup-sizing-default">
+              <p class="d-flex m-auto fw-bold">{{ index+1 }}</p>
+            </span>
+          </div>
+
+  {% endfor %}
+        </div>
+      </div>
+  </div>
+</div>
+
+  <div id="movementControls" class="col-auto">
+      <div class="row justify-content-center">
+          <div id="movementControlsAlignment" class="d-flex justify-content-center">
+              <div  class="d-flex">
+                <div id="analogControl" class="vertical-row">
+                  <div class="horizontal-row d-flex">
+                    <button id="microphoneToggle" class="btn btn-square btn-ctrl btn-success" onclick="toggleAudioInput()">
+                      <i class="fas fa-microphone"></i>
+                    </button>
+                    <button id="forwardButton" class="btn btn-square btn-ctrl btn-normal">
+                      <i class="fas fa-arrow-up"></i>
+                    </button>
+                    <button id="speakersToggle" class="btn btn-square btn-ctrl btn-success" onclick="toggleAudioOutput()">
+                      <i class="fas fa-volume-up"></i>
+                    </button>
+                  </div>
+                  <div class="horizontal-row d-flex">
+                    <button id="leftButton" class="btn btn-square btn-ctrl btn-normal">
+                      <i class="fas fa-rotate-left"></i>
+                    </button>
+                    <button id="stopButton" class="btn btn-square btn-ctrl btn-stop btn-danger">
+                      <i class="fas fa-stop"></i>
+                    </button>
+                    <button id="rightButton" class="btn btn-square btn-ctrl btn-normal">
+                      <i class="fas fa-rotate-right"></i>
+                    </button>
+                  </div>
+                  <button id="backwardButton" class="btn btn-square btn-ctrl btn-normal">
+                    <i class="fas fa-arrow-down"></i>
+                  </button>
+                </div>
+                <div id="joystickControl" class="d-none justify-content-center align-items-center">
+                  <div id="joystick"></div>
+                </div>
+              </div>
+        </div>
+      </div>
+    </div>
+
+  <div id="drawerControlsRight" class="col">
+    <div class="row justify-content-center">
+      <div class="d-flex">
+    {% for index in range(3, 6) %}  {% if loop.index == 1 %}
+          <div id="drawerControlsRightAlignment" class="d-flex row g-0 justify-content-end gap-2">
+      {% endif %}
+            <div class="input-group">
+              <span class="input-group-text input-group-label bg-secondary" id="inputGroup-sizing-default">
+                <p class="d-flex m-auto fw-bold">{{ index+1 }}</p>
+              </span>
+              <div class="input-group-spacer"></div>
+              <button class="btn btn-primary btn-square" id="drawer{{ index+1 }}-toggle" onclick="toggleDrawer('{{ index+1 }}')" aria-label="Toggle Drawer {{ index+1 }}">
+                <i class="fas fa-lock"></i>
+              </button>
+              <div class="input-group-spacer"></div>
+              <button class="btn btn-normal btn-square" id="drawer{{ index+1 }}-light" onclick="toggleLight('{{ index+1 }}')" aria-label="Toggle Light for Drawer {{ index+1 }}">
+                <i class="fa-regular fa-lightbulb icon-white"></i>
+              </button>
+            </div>
+
+    {% endfor %}
+          </div>
+      </div>
+    </div>
+  </div>

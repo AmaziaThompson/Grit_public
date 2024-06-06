@@ -1,0 +1,22 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Launching GUI {% endblock %}
+
+{% block content %}
+    <div class="loader col-6">
+      <div class="lds-ripple">
+        <div></div>
+        <div></div>
+      </div>
+      <span class="display-4">Launching GUI</span>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  function navigate() {
+      window.location.href = 'gui';
+  }
+  fetch('/video_feed').then(navigate);
+</script>
+{% endblock %}

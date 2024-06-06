@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <title>{% block title %}{% endblock %} - GRIT</title>
+
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"/>
+        <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet"/>
+        <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/load.css') }}" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                {% block navigation %}{% endblock %}
+            </nav>
+        </header>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}{% endblock %}
+    </body>
+    <scripts>
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        {% block scripts %}{% endblock %}
+    </scripts>
+</html>

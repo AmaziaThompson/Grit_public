@@ -1,0 +1,57 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} Web Interface {% endblock %}
+
+{% block navigation %}
+  <div id="navbar" class="position-relative top-0 start-0 justify-content-start align-items-center m-3 gap-3" style="width: 100vw">
+    <button id="configurationToggle" class="btn btn-square btn-primary" onclick="toggleConfigurationPanel()">
+        <i class="fas fa-cog"></i>
+    </button>
+    <div class="d-inline-flex align-items-center gap-3">
+        <h5>Network Status</h5>
+        <div id="network-status" class="status-indicator"></div>
+        <h5 id="latency-display"></h5>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <h1 id="resolutionWarning" class="display-1 m-3">The resolution of your device is incompatible with this interface.</h1>
+  <div id="wrapper" class="position-relative top-0 startcol-6" style="width: 200vw; transform: translateX(-100vw)">
+    <div id="configurationPanel" class="screen flex-column top-0 start-0 justify-content-center" style="height: auto; width: 100vw">
+      <div class="col justify-content-center m-3">
+        <div class="d-flex row g-0">
+          <h1>Configuration Panel</h1>
+          <h2 class="mt-3 mb-1">Movement</h2>
+          <h3 class="mb-1 text-secondary">Control Mode</h3>
+          <div class="toggle-switch">
+            <div class="form-check form-switch">  
+              <input class="form-check-input" type="checkbox" id="controlModeSwitch" onchange="updateControlMode()"/>
+              <label class="form-check-label" for="controlModeSwitch"><h5>Use virtual joystick</h5></label>
+            </div>
+          </div>
+          {% include 'partials/modules/crashcart/configuration.html' %}
+        </div>
+      </div>
+    </div>
+
+    <main id="controlPanel" class="screen d-flex flex-column justify-content-between" style="height: 100%; width: 100vw">
+      <section id="videoContainer">
+          <div id="videoElements" class="d-flex g-0">
+            <image id="cameraFeed" src="{{ url_for('video_feed') }}" alt="The video stream was unable to load." autoplay="autoplay" muted></video>
+          </div>
+      </section>
+
+      <section id="controlsContainer">
+        <div id="controlElements" class="d-flex row g-0 gap-2">
+          {% include 'partials/modules/crashcart/controls.html' %}
+        </div>
+      </div>
+    </main>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+{% include 'partials/modules/crashcart/scripts.html' %}
+<script src="{{ url_for('static', filename='js/audio.js') }}"></script>
+{% endblock %}
